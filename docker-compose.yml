@@ -1,0 +1,22 @@
+version: "3"
+services:
+  laravel-api:
+    build:
+      context: ./laravel-api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:9000"
+  nextjs-front-end:
+    build:
+      context: ./front-end
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: laravel_api
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: miguelito15
+    ports:
+      - "5432:5432"
