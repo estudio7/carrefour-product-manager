@@ -1,0 +1,21 @@
+# Dockerfile (Next.js)
+
+FROM node:14
+
+# Criar diretório da aplicação
+WORKDIR /usr/src/app
+
+# Instalar dependências
+COPY package*.json ./
+RUN npm install
+
+# Copiar arquivos da aplicação
+COPY . .
+
+# Construir aplicação
+RUN npm run build
+
+# Expor porta
+EXPOSE 3000
+
+CMD ["npm", "start"]
